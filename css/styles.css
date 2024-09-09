@@ -16,3 +16,7 @@ td:hover,
 td:focus {
   border: 3px solid black;
 }
+
+.background {
+  background-color: rgb(205, 201, 201);
+}
