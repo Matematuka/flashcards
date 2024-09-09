@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const table = document.getElementById('table');
   const cells = table.getElementsByTagName('td');
 
-  function handleCellClick(evt) {
+  function handleClick(evt) {
     const target = evt.target;
     if (target.tagName === 'TD') {
       const symbol = target.textContent;
@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  table.addEventListener('click', handleCellClick);
+  table.addEventListener('click', handleClick);
 });
