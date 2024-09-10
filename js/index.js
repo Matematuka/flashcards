@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const table = document.getElementById('table');
   const cells = Array.from(table.getElementsByTagName('td'));
+  const originalContent = cells.map((cell) => cell.textContent);
 
   function handleClick(evt) {
     const target = evt.target;
@@ -20,19 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const symbol = target.textContent;
       cells.forEach((cell) => {
         if (cell.textContent === symbol) {
-          cell.classList.add('background');
+          cell.classList.add('cell-hover');
         }
       });
     }
   }
 
   function handleMouseOut(evt) {
-    if (evt.target.tagName === 'TD') {
-      const symbol = evt.target.textContent;
+    const target = evt.target;
+    if (target.tagName === 'TD') {
+      const symbol = target.textContent;
       cells.forEach((cell) => {
         if (cell.textContent === symbol) {
-          cell.classList.remove('background');
+          cell.classList.remove('cell-hover');
         }
+      });
+    }
+  }
+
+  function handleDocumentClick(evt) {
+    const target = evt.target;
+    if (!table.contains(target)) {
+      cells.forEach((cell, index) => {
+        cell.textContent = originalContent[index];
       });
     }
   }
@@ -40,4 +51,5 @@ document.addEventListener('DOMContentLoaded', () => {
   table.addEventListener('click', handleClick);
   table.addEventListener('mouseover', handleMouseOver);
   table.addEventListener('mouseout', handleMouseOut);
+  document.addEventListener('click', handleDocumentClick);
 });

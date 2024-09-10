@@ -17,6 +17,6 @@ td:focus {
   border: 3px solid black;
 }
 
-.background {
+.cell-hover {
   background-color: rgb(205, 201, 201);
 }
